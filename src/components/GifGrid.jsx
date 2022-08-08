@@ -1,31 +1,20 @@
-import { useEffect, useState } from "react";
-
-const getGifs = async (category) => {
-  const url = `https://api.giphy.com/v1/gifs/search?api_key=CIBinQDGk2qqWYOIidUhPN72pSfIjhhq&q=${category}&limit=10`;
-  const resp = await fetch(url);
-  const { data } = await resp.json();
-
-  const gifs = data.map((img) => ({
-    id: img.id,
-    title: img.title,
-    url: img.images.downsized_medium.url,
-  }));
-  console.log(gifs);
-  return gifs;
-};
+//import { useEffect, useState } from "react";
+import { GifGridItems } from "./GifGridItems";
+import { useFetchGifs } from "../hooks/useFetchGifs";
 
 export const GifGrid = ({ category }) => {
-  const [counter, setCounter] = useState(10);
-
-  useEffect(() => {
-    getGifs(category);
-  }, []);
+  const { images, isLoading } = useFetchGifs(category);
 
   return (
     <div>
-      <h3>{category}</h3>
-      <h5>{counter}</h5>
-      <button onClick={() => setCounter(counter + 1)}>+1</button>
+      <h3 className="text-5xl font-primary my-3 text-violeta uppercase text-center">
+        {category}
+      </h3>
+      <div className=" grid grid-cols-2 md:grid-cols-4 mx-10 ">
+        {images.map((image) => (
+          <GifGridItems key={image.id} {...image} />
+        ))}
+      </div>
     </div>
   );
 };
