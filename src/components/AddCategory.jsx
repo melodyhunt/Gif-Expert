@@ -19,7 +19,7 @@ export const AddCategory = ({ onNewCategory }) => {
     <div className=" pt-0 md:pt-7">
       <form onSubmit={onSubmit} className="">
         <input
-          className="  py-2 md:pr-80 pr-32  pl-2 rounded-md border-2 items-center m-5 mt-0"
+          className="  py-2 md:pr-80 pr-32 pl-2 rounded-md border-2 items-center m-5 mt-0"
           type="text"
           placeholder="Buscar gifs"
           value={inputValue}

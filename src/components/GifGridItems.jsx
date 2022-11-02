@@ -1,11 +1,7 @@
 export const GifGridItems = ({ title, url, id }) => {
   return (
     <div className=" m-1 ">
-      <img
-        className=" w-96 h-40 border-2 border-amarillo  object-cover rounded-md"
-        src={url}
-        alt={title}
-      />
+      <img className=" w-72 h-72  p-3 hover:p-0 " src={url} alt={title} />
     </div>
   );
 };
